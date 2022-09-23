@@ -24,11 +24,17 @@ cor_mat$alpha <- NULL
 
 ## Netwerk correlatie plot
 
-```{r cars}
+```{r plot}
 library(qgraph)
 
 
 qgraph(cor_mat, cut=0, layout="spring", 
+       title="Scres schalen incl Acrimony Scale", nodeNames = colnames(cor_mat))
+```
+```{r plot}
+library(tidyverse)
+
+
+qgraph(cor_mat %>% select(-`Acrimony Scale`) %>% slice(-1), cut=0, layout="spring", 
        title="Scres schalen", nodeNames = colnames(cor_mat))
 ```
-
