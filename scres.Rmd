@@ -1,0 +1,34 @@
+---
+title: "Scres netwerk correlatie plot"
+author: "Gertjan Verhoeven"
+date: '2022-09-23'
+output:
+  pdf_document: default
+  html_document: default
+---
+
+# Inlezen data
+
+```{r setup}
+knitr::opts_chunk$set(echo = TRUE)
+
+library(readODS)
+cor_mat <- read_ods("scres_cor_mat.ods")
+
+rownames(cor_mat) <- cor_mat$Schaal
+
+cor_mat$Schaal <- NULL
+
+cor_mat$alpha <- NULL
+```
+
+## Netwerk correlatie plot
+
+```{r cars}
+library(qgraph)
+
+
+qgraph(cor_mat, cut=0, layout="spring", 
+       title="Scres schalen", nodeNames = colnames(cor_mat))
+```
+
