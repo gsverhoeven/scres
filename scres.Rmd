@@ -36,7 +36,7 @@ library(tidyverse)
 
 
 nw <- qgraph(cor_mat %>% select(-`Acrimony Scale`) %>% slice(-1), cut=0, layout="spring", 
-       title="Scres schalen", nodeNames = colnames(cor_mat))
+       title="Scres schalen", nodeNames = colnames(cor_mat %>% select(-`Acrimony Scale`) %>% slice(-1)))
 ```
 # Save as PNG
 
